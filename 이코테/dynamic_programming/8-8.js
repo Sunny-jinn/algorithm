@@ -8,8 +8,8 @@ function Solution(n, k, arr) {
   }
   return d[k];
   // Your solution code here
+ 
 }
-
 const n = 3;
 const k = 4;
 const arr = [1, 6, 5, 7];
