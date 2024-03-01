@@ -1,22 +1,23 @@
-// const readline = require("readline");
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-// })
+const rl = require("readline").createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-// rl.on("line", (line) => {
-//   const arr = [[0, 0], [1, 1], [2, 2]];
-//   const a = 1, b = 1;
-//   console.log(arr.includes([a, b]));
-//   rl.close();
-// })
+let lineCnt = 0, arr = [], cnt = 0;
 
-// rl.on("close", () => {
-//   process.exit()
-// })
-
-const fs = require("fs");
-const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
-const a = input[0];
-const b = input [1];
-console.log(a, b)
+rl.on('line', (line) => {
+  if(lineCnt === 0) {
+    lineCnt++;
+    cnt = Number(line);
+  }
+  else {
+    arr.push(line.split(' ').map(Number));
+    if(lineCnt === cnt) {
+      rl.close();
+    }
+    lineCnt++;
+  }
+}).on('close', () => {
+  console.log(arr);
+    process.exit();
+});
